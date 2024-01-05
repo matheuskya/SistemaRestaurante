@@ -1,0 +1,22 @@
+﻿@model Cliente
+
+<h1>Cadastro de cliente</h1>
+
+<form method="post">
+
+       <div class="mb-3 row"> 
+           <label>Nome do cliente</label>
+           <input type="text" asp-for="Name"/>
+
+       </div>
+    <div class="mb-3 row">
+        <label>Valor da conta</label>
+        <input type="text" asp-for="Value"/>
+
+    </div>
+    <div class="mb-3 row">
+
+    <button type="submit" class="btn btn-primary">Cadastrar</button>   
+    <a asp-controller="Cliente" asp-action="Index" class="btn btn-outline-dark">Consultar Clientes</a>
+    </div>
+</form>
