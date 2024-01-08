@@ -3,15 +3,18 @@
 <h1>Cadastro de cliente</h1>
 
 <form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
        <div class="mb-3 row"> 
            <label>Nome do cliente</label>
            <input type="text" asp-for="Name"/>
+           <span asp-validation-for="Name" class="text-danger"></span>
 
        </div>
     <div class="mb-3 row">
         <label>Valor da conta</label>
         <input type="text" asp-for="Value"/>
+        <span asp-validation-for="Value" class="text-danger"></span>
 
     </div>
     <div class="mb-3 row">
@@ -20,3 +23,9 @@
     <a asp-controller="Cliente" asp-action="Index" class="btn btn-outline-dark">Consultar Clientes</a>
     </div>
 </form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+}
