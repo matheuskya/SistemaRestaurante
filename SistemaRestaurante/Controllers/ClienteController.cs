@@ -37,6 +37,20 @@ namespace SistemaRestaurante.Controllers
         }
 
         [HttpPost]
+       public IActionResult Edit(Cliente obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Clientes.Update(obj);
+                _context.SaveChanges();
+                TempData["success"] = "Cliente editado com sucesso";
+
+                return RedirectToAction("Index", "Cliente");
+            }
+            return View();
+        }
+
+        [HttpPost]
         public IActionResult Cadastro(Cliente obj)
         {
             if(obj.Name?.ToLower() == "teste")
@@ -47,10 +61,42 @@ namespace SistemaRestaurante.Controllers
             {
             _context.Clientes.Add(obj); 
             _context.SaveChanges();
+                TempData["success"] = "Cliente cadastrado com sucesso";
                 return RedirectToAction("Index", "Cliente");
 
             }
             return View();
+
+        }
+
+
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            Cliente IdCliente = _context.Clientes.Find(id);
+            if (IdCliente == null)
+            {
+                return NotFound();
+            }
+            return View(IdCliente);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeletePOST(int? id)
+        {
+            Cliente obj = _context.Clientes.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            _context.Clientes.Remove(obj);
+            _context.SaveChanges();
+            TempData["success"] = "Cliente removido com sucesso";
+
+            return RedirectToAction("Index");
 
         }
     }
