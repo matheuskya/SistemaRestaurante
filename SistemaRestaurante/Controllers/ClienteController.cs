@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SistemaRestaurante.Data;
-using SistemaRestaurante.Models;
+using Sis.Models;
+using SistemaRestaurante.Sis.DataAccess.Data;
 
 namespace SistemaRestaurante.Controllers
 {

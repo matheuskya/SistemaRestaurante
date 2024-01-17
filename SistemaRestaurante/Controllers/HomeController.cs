@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using SistemaRestaurante.Models;
+using Sis.Models;
+
 using System.Diagnostics;
 
 namespace SistemaRestaurante.Controllers
